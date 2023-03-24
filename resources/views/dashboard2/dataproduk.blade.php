@@ -28,32 +28,55 @@
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Description</th>
+                                    <th>Price (RP) </th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($Produk as $item)
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
+                                    <td>
+                                        <img src="{{asset('image_product/'.$item->image)}}" alt="" style="
+                                        width: 60px;
+                                        border-radius: 5px;
+                                        padding-top: 5%;">
+                                    </td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->desc }}</td>
+                                    <td>{{ $item->price }}</td>
+                                    <td style="
+                                    display: flex;
+                                    justify-content: space-evenly;
+                                    padding-top: 49px;
+                                    padding-bottom: 48px;
+                                    margin-top: 0px;
+                                    /* text-align: center; */
+                                    /* justify-items: center; */
+                                ">
+                                        <a href="/admin/{{ $item->id }}/editproduk"><button type="button" class="btn btn-outline-warning"> Edit </button></a>
+
+                                        <form action="/admin/hapusproduk/{{$item->id}}" method="POST"
+                                            onsubmit="return confirm('yakin hapus?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger"> Delete </button>
+                                        </form>
+                                        <a class="" href="/admin/{{$item->id}}/editproduk"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Description</th>
+                                    <th>Price (RP) </th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>

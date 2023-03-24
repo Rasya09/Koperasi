@@ -23,6 +23,8 @@
       href="{{ asset('../assets/images/favicon.png')}}">
     <!-- Custom CSS -->
     <link href="{{ asset('../assets/libs/flot/css/float-chart.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('../assets/libs/select2/dist/css/select2.min.css') }}" />
+
     <!-- Custom CSS -->
     <link href="{{ asset('../dist/css/style.min.css')}}" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

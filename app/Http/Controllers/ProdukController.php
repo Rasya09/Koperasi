@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -23,7 +24,8 @@ class ProdukController extends Controller
     public function create()
     {
         $Produk = Produk::all();
-        return view('dashboard2.tambahproduk', ['Produk' => $Produk]);
+        $kategori = Kategori::all();
+        return view('dashboard2.tambahproduk', ['Produk' => $Produk, 'Kategori' => $kategori]);
     }
 
     /**
@@ -53,10 +55,11 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(produk $id)
+    public function edit($id)
     {
         $Produk = produk::findOrFail($id);
-        return view('dashboard2.editproduk', ['Produk' => $Produk]);
+        $Kategori = Kategori::where('id','!=', $Produk->kategori_id)->get(['id','name']);
+        return view('dashboard2.editproduk', ['Produk' => $Produk, 'Kategori'=> $Kategori]);
         
     }
 
@@ -95,7 +98,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(produk $id)
+    public function destroy($id)
     {
         $Produk = produk::findOrFail($id);
         $Produk->delete();

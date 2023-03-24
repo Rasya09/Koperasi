@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Kategori;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class produk extends Model
 {
@@ -17,4 +18,8 @@ class produk extends Model
         'stock',
         'kategori_id',
     ];
+    
+    public function Kategori(){
+        return $this->belongsTo(Kategori::class, 'kategori_id','id');
+    }
 }

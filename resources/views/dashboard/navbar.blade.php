@@ -20,11 +20,7 @@
           <!-- Logo text -->
           <span class="logo-text ms-2">
             <!-- dark Logo text -->
-            <img
-              src="{{ asset('../assets/images/logo-text.png')}}"
-              alt="homepage"
-              class="light-logo"
-            />
+            
           </span>
           <!-- Logo icon -->
           <!-- <b class="logo-icon"> -->
